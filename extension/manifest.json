@@ -1,18 +1,31 @@
-
 {
-    "name": "golinks but better",
-    "version": "1.0",
-    "manifest_version": 2,
-    "background": {
-      "scripts": ["background.js"]
-    },
-    "permissions": [
-        "activeTab",
-        "http://localhost:5000/*",
-        "storage",
-        "identity",
-        "<all_urls>"
-      ],
-    "content_security_policy": "script-src 'self'; object-src 'self'; worker-src 'self'"
+  "manifest_version": 3,
+  "name": " my golinks",
+  "version": "1.0",
+  "description": "golink bbyyyy",
+  "icons": {
+    "128": "images/icon.png"
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": ["*://*.golinks.com/*", "*://*.golinks.io/*", "*://go/*"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "webNavigation",
+    "activeTab",
+    "storage",
+    "background"
+  ],
+  "host_permissions": ["*://*/*"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; worker-src 'self'"
+  }
 }
-
