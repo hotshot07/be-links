@@ -91,7 +91,7 @@
 
 
 chrome.tabs.onUpdated.addListener((tabId, change, tab) => {
-    if (tab.active && change.url) {
+    if (tab.active && change.url && change.url.includes("go")){
 
         var shortlink = change.url.match(/go\/(.*)/)[1];
 
